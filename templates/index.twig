@@ -1,0 +1,39 @@
+{% extends "layout.twig" %}
+
+{% block content %}
+
+      <h1 style="text-align: center">Timeline</h1>
+
+      <ul class="tmtimeline">
+
+        <li>
+          <form action="{{ url('create') }}" method="POST">
+          <div class="tmlabel">
+            <dl class="form">
+              <dd>
+                <input type="text" placeholder="title" name="title" tabindex="1">
+                <button type="submit" class="btn" tabindex="4">Cancel</button>
+                <button type="submit" class="btn btn-primary" tabindex="3">Save changes</button>
+              </dd>
+            </dl>
+            <dl class="form">
+              <dd><textarea name="content" class="input-block" tabindex="2"></textarea></dd>
+            </dl>
+          </div>
+        </form>
+      </li>
+
+      {% for memo in memoCollection %}
+        <li>
+          <time class="tmtime" datetime="{{ memo.created_at }}"><span>{{ memo.created_at|date('Y-m-d') }}</span> <span>{{ memo.created_at|date('H:i') }}</span></time>
+          <div class="tmicon"></div>
+          <div class="tmlabel">
+            <h2>{{ memo.title }}</h2>
+            <div>{{ memo.content }}</div>
+          </div>
+        </li>
+      {% endfor %}
+
+    </ul>
+
+{% endblock %}
