@@ -29,7 +29,7 @@
           <div class="tmicon"></div>
           <div class="tmlabel">
             <h2>{{ memo.title }}</h2>
-            <div>{{ memo.content }}</div>
+            <div>{{ app['md.parser'].transform(memo.content)|raw }}</div>
           </div>
         </li>
       {% endfor %}
