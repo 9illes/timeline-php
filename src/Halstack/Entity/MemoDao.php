@@ -24,6 +24,15 @@ class MemoDao {
         //$this->dispatcher = $app['dispatcher'];
     }
 
+    public function find($id)
+    {
+        $sql = 'SELECT * FROM ' . $this->conn->quoteIdentifier($this->tableName) . ' WHERE id = :id';
+        $params = array('id' => $id);
+        $stmt = $this->conn->executeQuery($sql, $params);
+        $memo = $stmt->fetchAll(\PDO::FETCH_CLASS, $this->model);
+        return $memo;
+    }
+
     public function findAll()
     {
         $sql = 'SELECT * FROM ' . $this->conn->quoteIdentifier($this->tableName) . 'ORDER BY created_at DESC';

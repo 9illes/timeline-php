@@ -10,10 +10,10 @@ class MemoControllerProvider implements ControllerProviderInterface
     {
         $controllers = $app['controllers_factory'];
 
-        $app->match('/', 'Halstack\Controller\MemoController::indexAction')
+        $controllers->match('/', 'Halstack\Controller\MemoController::indexAction')
             ->bind('index');
 
-        $app->match('/create', 'Halstack\Controller\MemoController::createAction')
+        $controllers->match('/create', 'Halstack\Controller\MemoController::createAction')
             ->bind('create');
 
         return $controllers;

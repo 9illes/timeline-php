@@ -1,10 +1,13 @@
 <?php
 use Silex\Provider\StatsdServiceProvider;
 use Silex\Provider\HttpFragmentServiceProvider;
+use Silex\Provider\SerializerServiceProvider;
 use Rg\Silex\Provider\Markdown\MarkdownServiceProvider;
 
 // configure your app for the production environment
 $app->register(new HttpFragmentServiceProvider());
+
+$app->register(new SerializerServiceProvider());
 
 $app->register(new Silex\Provider\MonologServiceProvider(), array(
     'monolog.level' => Monolog\Logger::INFO,

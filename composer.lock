@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "9e020e0a71206a8486f9277d6ec6d57f",
-    "content-hash": "97c0291c0ca28ad45ab75c0620901ed6",
+    "hash": "95a40f2647dd851d82d918b0583ec38f",
+    "content-hash": "1872f1e97c316ac57919086ccf9954ce",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -650,6 +650,54 @@
                 "psr-3"
             ],
             "time": "2015-10-14 12:51:02"
+        },
+        {
+            "name": "nocarrier/hal",
+            "version": "0.9.12",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/blongden/hal.git",
+                "reference": "08ffddf52733633403e0f4ca6e949b0c7cc186f8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/blongden/hal/zipball/08ffddf52733633403e0f4ca6e949b0c7cc186f8",
+                "reference": "08ffddf52733633403e0f4ca6e949b0c7cc186f8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "4.4.*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Nocarrier": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Ben Longden",
+                    "email": "ben@nocarrier.co.uk",
+                    "homepage": "http://nocarrier.co.uk"
+                }
+            ],
+            "description": "application/hal builder / formatter for PHP 5.3+",
+            "homepage": "https://github.com/blongden/hal",
+            "keywords": [
+                "hal",
+                "hypermedia",
+                "json",
+                "rest",
+                "xml"
+            ],
+            "time": "2015-09-07 11:14:47"
         },
         {
             "name": "pimple/pimple",
@@ -1355,6 +1403,69 @@
                 "url"
             ],
             "time": "2015-12-23 08:00:11"
+        },
+        {
+            "name": "symfony/serializer",
+            "version": "v3.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/serializer.git",
+                "reference": "8a8c57f4bfbc38652db3cb5bf549dff947573637"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/serializer/zipball/8a8c57f4bfbc38652db3cb5bf549dff947573637",
+                "reference": "8a8c57f4bfbc38652db3cb5bf549dff947573637",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.9"
+            },
+            "require-dev": {
+                "doctrine/annotations": "~1.0",
+                "doctrine/cache": "~1.0",
+                "symfony/config": "~2.8|~3.0",
+                "symfony/property-access": "~2.8|~3.0",
+                "symfony/yaml": "~2.8|~3.0"
+            },
+            "suggest": {
+                "doctrine/annotations": "For using the annotation mapping. You will also need doctrine/cache.",
+                "doctrine/cache": "For using the default cached annotation reader and metadata cache.",
+                "symfony/config": "For using the XML mapping loader.",
+                "symfony/property-access": "For using the ObjectNormalizer.",
+                "symfony/yaml": "For using the default YAML mapping loader."
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "3.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\Serializer\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony Serializer Component",
+            "homepage": "https://symfony.com",
+            "time": "2015-12-26 13:39:53"
         },
         {
             "name": "symfony/stopwatch",

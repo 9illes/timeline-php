@@ -6,6 +6,8 @@ use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 use Halstack\Provider\MemoControllerProvider;
+use Halstack\Provider\MemoApiControllerProvider;
+
 /* Errors */
 
 $app->error(function (\Exception $e, $code) use ($app) {
@@ -30,4 +32,5 @@ $app->error(function (\Exception $e, $code) use ($app) {
  * Mounts
  */
 
+$app->mount('/api', new MemoApiControllerProvider);
 $app->mount('/', new MemoControllerProvider);
