@@ -45,7 +45,8 @@ $app->before(function (Request $request) {
         $request->request->replace(is_array($data) ? $data : array());
     }
     // Accepting CORS
-    header('Access-Control-Allow-Origin: *');
+    header('Access-Control-Allow-Origin: http://localhost:8080');
+    header('Access-Control-Allow-Credentials: true');
 });
 
 return $app;

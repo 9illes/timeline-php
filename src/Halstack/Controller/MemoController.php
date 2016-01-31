@@ -38,10 +38,27 @@ class MemoController
     public function apiIndexAction(Application $app, Request $request)
     {
 
+        $memosHal = new Hal(
+            $request->getRequestUri(),
+            array(
+                'welcome' => "Memos Api",
+                'hint_1' => "",
+                'hint_2' => ""
+            )
+        );
 
+        $memosHal->addLink('curies', $request->getRequestUri().'rels/{rel}', array('name' => 'm', 'templated' => true));
+        $memosHal->addLink('m:memos', '/api/memos');
 
+        $acceptToFormat = array('application/json' => 'json');
+        $accept = $request->headers->get('Accept');
+        $format = isset($acceptToFormat[$accept]) ? $acceptToFormat[$accept] : 'json'; // haha
 
-
+        return new Response(
+            $memosHal->asJson(),
+            200,
+            array("Content-Type" => $app['request']->getMimeType($format)
+        ));
     }
 
     public function apiGetAllAction(Application $app, Request $request)
