@@ -4,6 +4,7 @@ namespace Halstack\Controller;
 use Silex\Application;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\HttpKernelInterface;
 
 use Nocarrier\Hal;
 
@@ -21,7 +22,7 @@ class MemoApiController
             $request->getRequestUri(),
             array(
                 'welcome' => "Memos Api",
-                'hint_1' => "",
+                'hint_1' => "The API talk only json",
                 'hint_2' => ""
             )
         );
@@ -71,28 +72,26 @@ class MemoApiController
 
         return new Response(
             $memoHal->asJson(),
-            200,
+            $request->get('created') ? 201 : 200,
             array("Content-Type" => $app['request']->getMimeType('json')
         ));
     }
 
     public function createAction(Application $app, Request $request)
     {
+        // TODO use validator
+
         $memo = new Memo;
         $memo->title = $request->get('title');
         $memo->content = $request->get('content');
 
         $memoDao = new MemoDao($app['db'], $app);
         $memo = $memoDao->insert($memo);
-        $memo = $memoDao->find($memo->getId());
 
-        $memoHal = new MemoHal($memo);
-
-        return new Response(
-            $memoHal->asJson(),
-            201,
-            array("Content-Type" => $app['request']->getMimeType('json')
-        ));
+        $subRequest = Request::create($app['url_generator']
+            ->generate('api_memo', array('id' => $memo->getId(), 'created' => true)),
+            'GET');
+        return $app->handle($subRequest, HttpKernelInterface::SUB_REQUEST);
     }
 
     public function notFoundAction(Application $app, Request $request)
