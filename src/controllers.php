@@ -5,6 +5,9 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
+use Halstack\Provider\MemoController;
+use Halstack\Provider\MemoApiController;
+
 use Halstack\Provider\MemoControllerProvider;
 use Halstack\Provider\MemoApiControllerProvider;
 

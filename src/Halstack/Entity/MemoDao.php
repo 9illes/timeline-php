@@ -29,8 +29,13 @@ class MemoDao {
         $sql = 'SELECT * FROM ' . $this->conn->quoteIdentifier($this->tableName) . ' WHERE id = :id';
         $params = array('id' => $id);
         $stmt = $this->conn->executeQuery($sql, $params);
-        $memo = $stmt->fetchAll(\PDO::FETCH_CLASS, $this->model);
-        return $memo;
+        $memoCollection = $stmt->fetchAll(\PDO::FETCH_CLASS, $this->model);
+
+        if (empty($memoCollection)) {
+            return null;
+        }
+
+        return array_shift($memoCollection);
     }
 
     public function findAll()

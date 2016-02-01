@@ -10,13 +10,16 @@ class MemoApiControllerProvider implements ControllerProviderInterface
     {
         $controllers = $app['controllers_factory'];
 
-        $controllers->match('/', 'Halstack\Controller\MemoController::apiIndexAction')
-            ->bind('version');
+        $controllers->get('/', 'Halstack\Controller\MemoApiController::indexAction')
+            ->bind('api_welcome');
 
-        $controllers->match('/memos', 'Halstack\Controller\MemoController::apiGetAllAction')
+        $controllers->get('/memos', 'Halstack\Controller\MemoApiController::getAllAction')
             ->bind('api_memos');
 
-        $controllers->get('/memo/{id}', 'Halstack\Controller\MemoController::getByIdAction')
+        $controllers->post('/memos', 'Halstack\Controller\MemoApiController::createAction')
+            ->bind('api_create_memo');
+
+        $controllers->get('/memo/{id}', 'Halstack\Controller\MemoApiController::getOneAction')
             ->assert("id", "\d+")
             ->bind('api_memo');
 
